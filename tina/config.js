@@ -11,7 +11,7 @@ export default defineConfig({
   branch: process.env.GIT_BRANCH || "master",
 
   // Get this from tina.io
-  clientId: process.env.TINA_PUBLIC_CLIENT_ID,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   // Get this from tina.io
   token: process.env.TINA_TOKEN,
 

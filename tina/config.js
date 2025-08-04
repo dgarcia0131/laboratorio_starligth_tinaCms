@@ -8,10 +8,10 @@ const branch =
   "main";
 
 export default defineConfig({
-  branch,
+  branch: process.env.GIT_BRANCH || "master",
 
   // Get this from tina.io
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID,
   // Get this from tina.io
   token: process.env.TINA_TOKEN,
 
@@ -59,12 +59,12 @@ export default defineConfig({
             options: [
               {
                 value: "doc",
-                label: "Doc"
+                label: "Doc",
               },
               {
                 value: "splash",
-                label: "Splash"
-              }
+                label: "Splash",
+              },
             ],
             required: false,
           },
@@ -87,8 +87,8 @@ export default defineConfig({
                     type: "image",
                     name: "file",
                     label: "Image File",
-                  }
-                ]
+                  },
+                ],
               },
               {
                 type: "object",
@@ -116,10 +116,10 @@ export default defineConfig({
                     name: "variant",
                     label: "Button Variant",
                     options: ["primary", "secondary", "minimal"],
-                  }
-                ]
-              }
-            ]
+                  },
+                ],
+              },
+            ],
           },
           {
             type: "rich-text",
@@ -135,10 +135,15 @@ export default defineConfig({
             fields: [
               { type: "image", name: "image", label: "Imagen", required: true },
               { type: "string", name: "title", label: "Título", required: true },
-              { type: "string", name: "link", label: "Enlace"},
-              { type: "string", name: "linkText", label: "Texto del enlace", required: true }
-            ]
-          }
+              { type: "string", name: "link", label: "Enlace" },
+              {
+                type: "string",
+                name: "linkText",
+                label: "Texto del enlace",
+                required: true,
+              },
+            ],
+          },
         ],
       },
     ],

@@ -1,0 +1,31 @@
+image: node:20
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+
+deploy:
+  stage: deploy
+  script:
+    # Exportar variables de entorno para Tina Cloud
+    - export TINA_PUBLIC_CLIENT_ID=$TINA_PUBLIC_CLIENT_ID
+    - export TINA_TOKEN=$TINA_TOKEN
+    # Ejemplo para Netlify (puedes adaptar para Vercel o tu propio server)
+    - npm install -g netlify-cli
+    - netlify deploy --prod --dir=dist --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+  only:
+    - main
+    - master

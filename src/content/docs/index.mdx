@@ -1,0 +1,44 @@
+---
+title: Guia de Uso Portal Tributario
+description: Guia de Uso Portal Tributario
+template: splash
+hero:
+  tagline: >-
+    Aprende paso a paso cómo ingresar, registrarte, consultar tus obligaciones,
+    descargar certificados y utilizar todas las funcionalidades del portal
+    tributario de forma rápida y segura.
+cards:
+  - image: /assets/content-cards/RegistroUsuario.png
+    title: ¿Cómo Registrar un Usuario en el Portal?
+    linkText: Ver Paso a Paso
+  - image: /assets/content-cards/InicioSesion.png
+    title: ¿Como Iniciar sesion en el Portal Tributario?
+    link: /accesoportal/ingresoportal
+    linkText: Ver Paso a Paso
+  - image: /assets/content-cards/IngresarFirma.png
+    title: ¿Cómo Ingresar Firma Electrónica en el Portal?
+    linkText: Ver Paso a Paso
+---
+
+
+
+import CustomCard from '../../components/CustomCard.astro';
+import CustomFooter from '../../components/CustomFooter.astro';
+
+<div class="custom-section-home">
+  # <span id='como-podemos-ayudarte' class="titulo-ayuda">¿Como Podemos Ayudarte?</span>
+  <div class="cards-columna cards-menos-margen">
+    {frontmatter.cards?.map(card => (
+      <CustomCard
+        image={card.image}
+        title={card.title}
+        link={card.link}
+        linkText={card.linkText}
+      />
+    ))}
+  </div>
+</div>
+
+<div class="footer">
+  <CustomFooter />
+</div>

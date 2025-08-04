@@ -1,0 +1,22 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  link: string;
+  linkText: string;
+}
+
+const { image, title, link, linkText } = Astro.props;
+---
+
+<div class="custom-card-container">
+  <div class="custom-card">
+    <img src={image} alt={title} class="card-image" />
+    <div class="card-divider"></div>
+    <h3 class="card-title">{title}</h3>
+    <a href={link} class="card-link">
+      {linkText}
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</div>

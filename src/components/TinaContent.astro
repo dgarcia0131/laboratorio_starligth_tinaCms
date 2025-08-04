@@ -1,0 +1,54 @@
+---
+import { useTina } from 'tinacms/dist/react';
+import { client } from '../../tina/__generated__/client';
+
+// Obtener los datos de la página desde TinaCMS
+const { data } = await client.queries.docs({ relativePath: 'index.mdx' });
+---
+
+<div class="tina-content">
+  <h2>Contenido gestionado por TinaCMS</h2>
+  <p>Título: {data.docs.title}</p>
+  <p>Descripción: {data.docs.description}</p>
+  
+  {data.docs.hero && (
+    <div class="hero-section">
+      <h3>Hero Section:</h3>
+      <p>Tagline: {data.docs.hero.tagline}</p>
+      {data.docs.hero.actions && data.docs.hero.actions.map((action, index) => (
+        action && (
+          <a href={action.link} class="hero-button">
+            {action.text}
+          </a>
+        )
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .tina-content {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+  
+  .hero-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+  }
+  
+  .hero-button {
+    display: inline-block;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background: #3b82f6;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 4px;
+  }
+</style>

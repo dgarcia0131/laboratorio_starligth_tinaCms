@@ -1,0 +1,271 @@
+
+
+/* Estilos personalizados para el proyecto */
+.titulo-ayuda {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+.custom-section-home {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -100px;
+  z-index: 1;
+  right: 15px;
+  margin-bottom: 1rem;
+}
+
+/* Forzar solo modo claro */
+:root {
+  color-scheme: light;
+}
+
+/* Ocultar el selector de tema oscuro/claro */
+starlight-theme-select {
+  display: none !important;
+}
+
+/* También ocultar cualquier botón de tema */
+[data-theme-toggle],
+.theme-toggle,
+button[aria-label*="theme"],
+button[aria-label*="tema"] {
+  display: none !important;
+}
+
+/* Variables CSS personalizadas para modo claro */
+:root {
+  --sl-color-accent-low: #b91c1c;
+  --sl-color-accent: #DF0209;
+  --sl-color-accent-high: #dc2626;
+  --sl-color-white: #DF0209;
+  --sl-color-gray-1: #040404;
+  --sl-color-gray-2: #000000;
+  --sl-color-gray-3: #212223;
+  --sl-color-gray-4: #cbd5e1;
+  --sl-color-gray-5: #94a3b8;
+  --sl-color-gray-6: #64748b;
+  
+  /* Fuentes personalizadas */
+  --sl-font-system: 'Inter', system-ui, sans-serif;
+  --sl-font-size-base: 1rem;
+  --sl-line-height-base: 1.6;
+  
+  /* Colores personalizados para el header */
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-text-nav: #DF0209;
+}
+
+/* Personalización del header/navbar */
+.header {
+  background: var(--sl-color-bg-nav) !important;
+  position: static !important;
+}
+
+.site-title, .site-title a {
+  color: var(--sl-color-text-nav) !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  text-decoration: none !important;
+  margin-right: 600px !important;
+}
+
+.site-title:hover {
+  color: var(--sl-color-accent-high) !important;
+  transition: color 0.3s ease;
+}
+
+/* Personalización de la barra de búsqueda */
+.search-button {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #040404 !important;
+  border-radius: 8px !important;
+}
+
+.search-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: var(--sl-color-accent) !important;
+}
+
+/* Personalización de iconos en el header */
+.social-icons a, 
+.theme-toggle {
+  color: var(--sl-color-text-nav) !important;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover,
+.theme-toggle:hover {
+  color: var(--sl-color-accent-high) !important;
+  transform: scale(1.1);
+}
+
+/* Personalización específica para elementos del header */
+[data-theme="light"] .header,
+[data-theme="dark"] .header {
+  background: var(--sl-color-bg-nav) !important;
+}
+
+/* Personalización del logo si se usa */
+.logo {
+  max-height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Personalización de la navegación principal */
+.top-nav {
+  background: transparent !important;
+}
+
+/* Añadir efecto glassmorphism al header */
+
+
+/* Personalización de la barra de búsqueda con efectos */
+.search-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.search-button:hover::before {
+  left: 100%;
+}
+
+/* Estilos para el hero de la página principal */
+.hero {
+  position: relative;
+  flex-direction: column;
+  bottom: 100px;
+  right: 100px;
+  background: url("../assets/banner.png") no-repeat;
+  background-size: cover;
+  padding: 4rem 2rem;
+  width: 100vw;
+  height: 70vh;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero .tagline {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin: 1rem 0 2rem 0;
+  color: #f8fafc;
+}
+
+/* Estilos para contenido personalizado */
+.custom-section {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-left: 4px solid var(--sl-color-accent);
+}
+
+.custom-section h2 {
+  color: var(--sl-color-accent);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para botones personalizados */
+.btn-custom {
+  background: linear-gradient(135deg, var(--sl-color-accent) 0%, var(--sl-color-accent-high) 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .custom-section {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+}
+
+/* Forzar modo claro en todos los elementos */
+html[data-theme="dark"],
+html[data-theme="auto"] {
+  /* Sobrescribir cualquier variable de modo oscuro */
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #f8fafc;
+  --sl-color-bg-sidebar: #ffffff;
+  --sl-color-text: #000000;
+  --sl-color-text-accent: #3b82f6;
+}
+
+/* Asegurar que el body siempre use colores claros */
+body {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* Forzar colores claros en navegación */
+.navbar,
+.sidebar {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* Ocultar cualquier indicador de tema oscuro */
+[data-theme="dark"] {
+  display: none !important;
+}

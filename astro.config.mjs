@@ -7,6 +7,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+    site: 'https://instructivoportal.netlify.app',
     integrations: [starlight({
         title: 'Instructivo Portal',
         description: 'Instructivo para el uso del portal tributario',

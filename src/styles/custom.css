@@ -40,10 +40,10 @@ button[aria-label*="tema"] {
 
 /* Variables CSS personalizadas para modo claro */
 :root {
-  --sl-color-accent-low: #b91c1c;
-  --sl-color-accent: #DF0209;
-  --sl-color-accent-high: #dc2626;
-  --sl-color-white: #DF0209;
+  --sl-color-accent-low: #09C79B;
+  --sl-color-accent: #09C79B;
+  --sl-color-accent-high: #09C79B;
+  --sl-color-white: #09C79B;
   --sl-color-gray-1: #040404;
   --sl-color-gray-2: #000000;
   --sl-color-gray-3: #212223;
@@ -58,7 +58,7 @@ button[aria-label*="tema"] {
   
   /* Colores personalizados para el header */
   --sl-color-bg-nav: #ffffff;
-  --sl-color-text-nav: #DF0209;
+  --sl-color-text-nav: #09C79B;
 }
 
 /* Personalización del header/navbar */
@@ -157,8 +157,8 @@ button[aria-label*="tema"] {
   flex-direction: column;
   bottom: 100px;
   right: 100px;
-  background: url("../assets/banner.png") no-repeat;
-  background-size: cover;
+  background: url("../assets/Banner.png") no-repeat;
+  background-size: contain;
   padding: 4rem 2rem;
   width: 100vw;
   height: 70vh;

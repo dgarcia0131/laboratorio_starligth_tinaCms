@@ -142,6 +142,11 @@ export default defineConfig({
                 label: "Texto del enlace",
                 required: true,
               },
+              {
+                type: "string",
+                name: "description",
+                label: "Descripción",
+              },
             ],
           },
         ],

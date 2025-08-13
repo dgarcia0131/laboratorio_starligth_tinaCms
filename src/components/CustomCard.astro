@@ -2,11 +2,12 @@
 interface Props {
   image: string;
   title: string;
+  description?: string;
   link: string;
   linkText: string;
 }
 
-const { image, title, link, linkText } = Astro.props;
+const { image, title, link, linkText, description } = Astro.props;
 ---
 
 <div class="custom-card-container">
@@ -14,6 +15,7 @@ const { image, title, link, linkText } = Astro.props;
     <img src={image} alt={title} class="card-image" />
     <div class="card-divider"></div>
     <h3 class="card-title">{title}</h3>
+    {description && <p class="card-description">{description}</p>}
     <a href={link} class="card-link">
       {linkText}
       <span class="arrow">→</span>

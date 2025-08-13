@@ -5,16 +5,16 @@ template: splash
 hero:
   tagline: >-
 cards:
-  - image: /assets/content-cards/RegistroUsuario.png
-    title: ¿Cómo Registrar un Usuario en el Portal?
-    linkText: Ver Paso a Paso
-  - image: /assets/content-cards/InicioSesion.png
-    title: ¿Cómo Iniciar sesión en el Portal Tributario?
-    link: /accesoportal/ingresoportal
-    linkText: Ver Paso a Paso
-  - image: /assets/content-cards/IngresarFirma.png
-    title: ¿Cómo Ingresar Firma Electrónica en el Portal?
-    linkText: Ver Paso a Paso
+  - image: /assets/content-cards/CardGuias.png
+    title: Ver instrucciones paso a paso
+    link: guias/guiasinicio
+    linkText: Ver Guias Paso a Paso
+    description: Aprende paso a paso cómo utilizar todas las funcionalidades del portal tributario de forma rápida y segura.
+  - image: /assets/content-cards/CardVideoAyudas.png
+    title: Ver Video Ayudas
+    link: tutoriales/tutorialesinicio
+    linkText: Ver Video Ayudas
+    description: Aprende a utilizar el portal tributario a través de nuestros videos tutoriales.
 ---
 
 import CustomCard from '../../components/CustomCard.astro';
@@ -27,6 +27,7 @@ import CustomFooter from '../../components/CustomFooter.astro';
       <CustomCard
         image={card.image}
         title={card.title}
+        description={card.description}
         link={card.link}
         linkText={card.linkText}
       />

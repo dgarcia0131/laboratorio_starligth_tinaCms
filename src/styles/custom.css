@@ -1,5 +1,3 @@
-
-
 /* Estilos personalizados para el proyecto */
 .titulo-ayuda {
   display: block;
@@ -267,5 +265,10 @@ body {
 
 /* Ocultar cualquier indicador de tema oscuro */
 [data-theme="dark"] {
+  display: none !important;
+}
+
+/*Ocultando el slidebar*/
+.sidebar, .right-sidebar, aside[aria-label="Sidebar"] {
   display: none !important;
 }

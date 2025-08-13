@@ -1,0 +1,41 @@
+<script>
+    // aqui se optiene las dos barras laterales
+    const slidebar = document.querySelectorAll(
+        ".sidebar, .right-sidebar, aside[aria-label='Sidebar']",
+    );
+
+    // aqui se optiene los links de paginacion que salen en la parte inferior
+    const pagelinks = document.querySelector(".pagination-links");
+
+    // aca se optiene el contenido principal
+    const content = document.querySelectorAll("main, .content-panel");
+    // rutas que no deben mostrar la barra lateral izquierda
+    const rutasSinSlidebar = [
+        "/guias/iniciosesion",
+        "/guias/firmaelectronica",
+        "/guias/registrousuario",
+    ];
+    // rutas que no deben mostrar los links de paginacion y modificar el contenido principal
+    const ocultaLinks = ["/guias/guiasinicio", "/tutoriales/tutorialesinicio"];
+
+    // Mostrar la barra lateral si la ruta coincide
+    for (let i = 0; i < rutasSinSlidebar.length; i++) {
+        if (window.location.pathname.includes(rutasSinSlidebar[i])) {
+            slidebar[1].setAttribute("style", "display: block !important;");
+        }
+        // aca se ocultan los links de paginacion y se modifica el contenido principal
+        for (let index = 0; index < ocultaLinks.length; index++) {
+            const element = ocultaLinks[index];
+            if (pagelinks && window.location.pathname.includes(element)) {
+                console.log("ocultando links", pagelinks);
+                pagelinks.setAttribute("style", "display: none !important;");
+                for (let index = 0; index < content.length; index++) {
+                    const element = content[index];
+                    element?.classList.add("layout-sin-sidebar");
+                }
+            }
+        }
+    }
+</script>
+
+<slot />

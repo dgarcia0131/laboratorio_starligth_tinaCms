@@ -1,0 +1,63 @@
+<script>
+    // aqui se optiene las dos barras laterales
+    const slidebar = document.querySelectorAll(
+        ".sidebar, .right-sidebar, aside[aria-label='Sidebar']",
+    );
+
+    const rutasSinSlidebar = [
+        "/guias/iniciosesion",
+        "/guias/firmaelectronica",
+        "/guias/registrousuario",
+    ];
+
+    for (let i = 0; i < rutasSinSlidebar.length; i++) {
+        if (window.location.pathname.includes(rutasSinSlidebar[i])) {
+            slidebar[0].setAttribute("style", "display: block !important;");
+            slidebar[1].setAttribute("style", "display: block !important;");
+        }
+    }
+
+    const itemsLista = document.querySelectorAll(
+        ".sidebar-content .top-level li details",
+    );
+
+    const rutaActual = window.location.pathname;
+    let algunGrupoMostrado = false;
+
+    itemsLista.forEach((details) => {
+        const enlaces = details.querySelectorAll("a[href]");
+        let mostrarGrupo = false;
+
+        enlaces.forEach((enlace) => {
+            const href = enlace.getAttribute("href");
+            // Coincidencia flexible: incluye o empieza con
+            if (href && rutaActual === href) {
+                mostrarGrupo = true;
+                console.log(`Mostrando grupo para: ${href}`);
+            }
+            console.log(
+                `Comparando ${rutaActual} con ${href}: ${mostrarGrupo}`,
+            );
+            console.log(enlaces);
+        });
+
+        if (mostrarGrupo) {
+            details.setAttribute("style", "display: block;");
+            details.setAttribute("open", "true");
+            algunGrupoMostrado = true;
+        } else {
+            details.setAttribute("style", "display: none;");
+            details.setAttribute("open", "false");
+        }
+    });
+
+    // Si ningún grupo coincide, muestra todos los grupos (fallback)
+    if (!algunGrupoMostrado) {
+        itemsLista.forEach((details) => {
+            details.setAttribute("style", "display: block;");
+            details.setAttribute("open", "false");
+        });
+    }
+</script>
+
+<slot />

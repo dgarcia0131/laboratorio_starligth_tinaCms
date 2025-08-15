@@ -1,63 +1,78 @@
 <script>
-    // aqui se optiene las dos barras laterales
+function iniciarSidebar() {
     const slidebar = document.querySelectorAll(
-        ".sidebar, .right-sidebar, aside[aria-label='Sidebar']",
+        ".sidebar, .right-sidebar, aside[aria-label='Sidebar']"
     );
+
+    if (slidebar.length === 0) return; // Aún no existe
 
     const rutasSinSlidebar = [
         "/guias/iniciosesion",
         "/guias/firmaelectronica",
         "/guias/registrousuario",
+        "/guias/certificadobomberos",
     ];
 
     for (let i = 0; i < rutasSinSlidebar.length; i++) {
         if (window.location.pathname.includes(rutasSinSlidebar[i])) {
-            slidebar[0].setAttribute("style", "display: block !important;");
-            slidebar[1].setAttribute("style", "display: block !important;");
+            slidebar[0]?.setAttribute("style", "display: block !important;");
+            slidebar[1]?.setAttribute("style", "display: block !important;");
         }
     }
 
-    const itemsLista = document.querySelectorAll(
-        ".sidebar-content .top-level li details",
-    );
+    function mostrarGruposSidebar() {
+        const itemsLista = document.querySelectorAll(
+            ".sidebar-content .top-level li details"
+        );
+        const rutaActual = window.location.pathname;
 
-    const rutaActual = window.location.pathname;
-    let algunGrupoMostrado = false;
-
-    itemsLista.forEach((details) => {
-        const enlaces = details.querySelectorAll("a[href]");
-        let mostrarGrupo = false;
-
-        enlaces.forEach((enlace) => {
-            const href = enlace.getAttribute("href");
-            // Coincidencia flexible: incluye o empieza con
-            if (href && rutaActual === href) {
-                mostrarGrupo = true;
-                console.log(`Mostrando grupo para: ${href}`);
-            }
-            console.log(
-                `Comparando ${rutaActual} con ${href}: ${mostrarGrupo}`,
-            );
-            console.log(enlaces);
-        });
-
-        if (mostrarGrupo) {
-            details.setAttribute("style", "display: block;");
-            details.setAttribute("open", "true");
-            algunGrupoMostrado = true;
-        } else {
-            details.setAttribute("style", "display: none;");
-            details.setAttribute("open", "false");
-        }
-    });
-
-    // Si ningún grupo coincide, muestra todos los grupos (fallback)
-    if (!algunGrupoMostrado) {
         itemsLista.forEach((details) => {
-            details.setAttribute("style", "display: block;");
-            details.setAttribute("open", "false");
+            const enlaces = details.querySelectorAll("a[href]");
+            let mostrarGrupo = false;
+
+            enlaces.forEach((enlace) => {
+                const href = enlace.getAttribute("href");
+                if (href && rutaActual.includes(href)) {
+                    mostrarGrupo = true;
+                    console.log(`Mostrando grupo para: ${href}`);
+                }
+            });
+
+            const summary = details.querySelector("summary");
+            if (
+                summary &&
+                (
+                    summary.textContent.trim().toLowerCase().includes("guias") ||
+                    summary.textContent.trim().toLowerCase().includes("ver tutoriales")
+                )
+            ) {
+                mostrarGrupo = true;
+            }
+
+            if (mostrarGrupo) {
+                details.setAttribute("style", "display: block;");
+                details.setAttribute("open", "true");
+            } else {
+                details.setAttribute("style", "display: none;");
+                details.setAttribute("open", "false");
+            }
         });
     }
+
+    mostrarGruposSidebar();
+}
+
+// Observa el body y detecta cuando aparezca el sidebar
+const observer = new MutationObserver(() => {
+    if (document.querySelector(".sidebar, .right-sidebar, aside[aria-label='Sidebar']")) {
+        iniciarSidebar();
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Por si acaso, ejecuta también en carga inicial
+document.addEventListener("DOMContentLoaded", iniciarSidebar);
 </script>
 
 <slot />

@@ -8,7 +8,7 @@ hero:
 cards:
   - image: /assets/content-cards/RegistroUsuario.png
     title: ¿Cómo Registrar un Usuario en el Portal?
-    link: /guias/registrousuario/validadocumento
+    link: /guias/registrousuario/registrarusuario
     linkText: Ver Paso a Paso
   - image: /assets/content-cards/InicioSesion.png
     title: ¿Cómo Iniciar sesión en el Portal Tributario?
@@ -18,13 +18,17 @@ cards:
     title: ¿Cómo Ingresar Firma Electrónica en el Portal?
     link: /guias/firmaelectronica/ingresoservicio
     linkText: Ver Paso a Paso
+  - image: /assets/content-cards/certificadoBomberos.jpg
+    title: ¿Cómo Gestionar Mis Solicitudes Ante el Cuerpo de Bomberos?
+    link: /guias/certificadobomberos/consultasolicitud
+    linkText: Ver Paso a Paso
 ---
 
 import CustomCard from '../../../components/CustomCard.astro';
 import CustomFooter from '../../../components/CustomFooter.astro';
 
 <div class="custom-section-home">
-  # <span id='como-podemos-ayudarte' class="titulo-ayuda">¿Cómo Podemos Ayudarte?</span>
+  # <span id='como-podemos-ayudarte' class="titulo-ayuda">Guias Paso a Paso</span>
   <div class="cards-columna cards-menos-margen">
     {frontmatter.cards?.map(card => (
       <CustomCard

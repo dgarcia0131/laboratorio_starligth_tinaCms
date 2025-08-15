@@ -2,4 +2,41 @@
 title:  ­
 description: Guías para comenzar a utilizar el portal tributario.
 layout: ../../../layouts/LayoutSinSlidebar.astro
+template: splash
+hero:
+  tagline: >- 
+cards:
+  - image: /assets/content-cards/RegistroUsuario.png
+    title: ¿Cómo Registrar un Usuario en el Portal?
+    link: /guias/registrousuario/validadocumento
+    linkText: Ver Tutorial
+  - image: /assets/content-cards/InicioSesion.png
+    title: ¿Cómo Iniciar sesión en el Portal Tributario?
+    link: /guias/iniciosesion/ingresoportal
+    linkText: Ver Tutorial
+  - image: /assets/content-cards/IngresarFirma.png
+    title: ¿Cómo Ingresar Firma Electrónica en el Portal?
+    link: /guias/firmaelectronica/ingresoservicio
+    linkText: Ver Tutorial
 ---
+
+import CustomCard from '../../../components/CustomCard.astro';
+import CustomFooter from '../../../components/CustomFooter.astro';
+
+<div class="custom-section-home">
+  # <span id='como-podemos-ayudarte' class="titulo-ayuda">Tutoriales Paso a Paso</span>
+  <div class="cards-columna cards-menos-margen">
+    {frontmatter.cards?.map(card => (
+      <CustomCard
+        image={card.image}
+        title={card.title}
+        link={card.link}
+        linkText={card.linkText}
+      />
+    ))}
+  </div>
+</div>
+
+<div class="footer">
+  <CustomFooter />
+</div>

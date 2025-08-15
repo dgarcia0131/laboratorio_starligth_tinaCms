@@ -9,18 +9,19 @@
 
     // aca se optiene el contenido principal
     const content = document.querySelectorAll("main, .content-panel");
-    // rutas que no deben mostrar la barra lateral izquierda
-    const rutasSinSlidebar = [
+    // rutas que deben mostrar la barra lateral izquierda
+    const rutasConSlidebar = [
         "/guias/iniciosesion",
         "/guias/firmaelectronica",
         "/guias/registrousuario",
+        "/guias/certificadobomberos",
     ];
     // rutas que no deben mostrar los links de paginacion y modificar el contenido principal
     const ocultaLinks = ["/guias/guiasinicio", "/tutoriales/tutorialesinicio"];
 
     // Mostrar la barra lateral si la ruta coincide
-    for (let i = 0; i < rutasSinSlidebar.length; i++) {
-        if (window.location.pathname.includes(rutasSinSlidebar[i])) {
+    for (let i = 0; i < rutasConSlidebar.length; i++) {
+        if (window.location.pathname.includes(rutasConSlidebar[i])) {
             slidebar[1].setAttribute("style", "display: block !important;");
         }
         // aca se ocultan los links de paginacion y se modifica el contenido principal

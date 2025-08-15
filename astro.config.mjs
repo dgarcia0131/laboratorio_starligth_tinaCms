@@ -43,16 +43,20 @@ export default defineConfig({
                 items: [
                     { label: '¿Cómo Ingresar al Servicio de Firma Electrónica?', slug: 'guias/firmaelectronica/ingresoservicio' },
                     { label: '¿Cómo Habilitar mi Firma Electrónica?', slug: 'guias/firmaelectronica/habilitarfirmaelectronica' },
-                    { label: '¿Cómo Descargar el Comprobante de Firma Electrónica?', slug: 'guias/firmaelectronica/descargacomprobante' },
                 ],
             },
             {
                 label: '¿Cómo Registrar un Usuario?',
                 items: [
-                    { label: 'Validar Documento', slug: 'guias/registrousuario/validadocumento' },
-                    { label: 'Registrar Datos', slug: 'guias/registrousuario/registradatos' },
-                    { label: 'Validar Cuenta', slug: 'guias/registrousuario/validacuenta' },
-                    { label: 'Bienvenida', slug: 'guias/registrousuario/bienvenida' },
+                    { label: 'Registrar Usuario', slug: 'guias/registrousuario/registrarusuario' },
+                ],
+            },
+            {
+                label: '¿Cómo Gestionar Mis Solicitudes Ante el Cuerpo de Bomberos?',
+                items: [
+                    { label: '¿Cómo Consultar el Estado de mi Solicitud?', slug: 'guias/certificadobomberos/consultasolicitud' },
+                    { label: '¿Cómo Enviar una Solicitud?', slug: 'guias/certificadobomberos/enviasolicitud' },
+                    { label: '¿Cómo Validar un Certificado?', slug: 'guias/certificadobomberos/validacertificado' },
                 ],
             },
             {

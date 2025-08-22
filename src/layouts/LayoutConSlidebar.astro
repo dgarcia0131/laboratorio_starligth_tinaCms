@@ -4,75 +4,82 @@ function iniciarSidebar() {
         ".sidebar, .right-sidebar, aside[aria-label='Sidebar']"
     );
 
-    if (slidebar.length === 0) return; // Aún no existe
+    if (slidebar.length === 0) {
+        console.log("❌ Sidebar no encontrado todavía");
+        return false;
+    }
 
-    const rutasSinSlidebar = [
+    const rutasConSlidebar = [
         "/guias/iniciosesion",
         "/guias/firmaelectronica",
         "/guias/registrousuario",
         "/guias/certificadobomberos",
     ];
 
-    for (let i = 0; i < rutasSinSlidebar.length; i++) {
-        if (window.location.pathname.includes(rutasSinSlidebar[i])) {
+    for (let i = 0; i < rutasConSlidebar.length; i++) {
+        if (window.location.pathname.includes(rutasConSlidebar[i])) {
             slidebar[0]?.setAttribute("style", "display: block !important;");
             slidebar[1]?.setAttribute("style", "display: block !important;");
         }
     }
 
-    function mostrarGruposSidebar() {
-        const itemsLista = document.querySelectorAll(
-            ".sidebar-content .top-level li details"
-        );
-        const rutaActual = window.location.pathname;
+    const itemsLista = document.querySelectorAll(
+        ".sidebar-content .top-level li details"
+    );
 
-        itemsLista.forEach((details) => {
-            const enlaces = details.querySelectorAll("a[href]");
-            let mostrarGrupo = false;
+    if (itemsLista.length === 0) {
+        console.log("❌ Grupos de sidebar no encontrados todavía");
+        return false;
+    }
 
-            enlaces.forEach((enlace) => {
-                const href = enlace.getAttribute("href");
-                if (href && rutaActual.includes(href)) {
-                    mostrarGrupo = true;
-                    console.log(`Mostrando grupo para: ${href}`);
-                }
-            });
+    const rutaActual = window.location.pathname;
+    console.log("✅ Sidebar y grupos listos para:", rutaActual);
 
-            const summary = details.querySelector("summary");
-            if (
-                summary &&
-                (
-                    summary.textContent.trim().toLowerCase().includes("guias") ||
-                    summary.textContent.trim().toLowerCase().includes("ver tutoriales")
-                )
-            ) {
+    itemsLista.forEach((details) => {
+        const enlaces = details.querySelectorAll("a[href]");
+        let mostrarGrupo = false;
+
+        enlaces.forEach((enlace) => {
+            const href = enlace.getAttribute("href");
+            if (href && rutaActual.includes(href)) {
                 mostrarGrupo = true;
-            }
-
-            if (mostrarGrupo) {
-                details.setAttribute("style", "display: block;");
-                details.setAttribute("open", "true");
-            } else {
-                details.setAttribute("style", "display: none;");
-                details.setAttribute("open", "false");
+                console.log(`Mostrando grupo para: ${href}`);
             }
         });
-    }
 
-    mostrarGruposSidebar();
+        const summary = details.querySelector("summary");
+        if (
+            summary &&
+            (
+                summary.textContent.trim().toLowerCase().includes("guias") ||
+                summary.textContent.trim().toLowerCase().includes("ver tutoriales")
+            )
+        ) {
+            mostrarGrupo = true;
+        }
+
+        if (mostrarGrupo) {
+            details.setAttribute("style", "display: block;");
+            details.setAttribute("open", "true");
+        } else {
+            details.setAttribute("style", "display: none;");
+            details.setAttribute("open", "false");
+        }
+    });
+
+    return true;
 }
 
-// Observa el body y detecta cuando aparezca el sidebar
-const observer = new MutationObserver(() => {
-    if (document.querySelector(".sidebar, .right-sidebar, aside[aria-label='Sidebar']")) {
-        iniciarSidebar();
-    }
+// 🔹 Ejecutar después de la hidratación de Astro
+document.addEventListener("astro:after-hydrate", () => {
+    iniciarSidebar();
 });
 
+// 🔹 Observer para cambios dinámicos (navegación interna SPA)
+const observer = new MutationObserver(() => {
+    iniciarSidebar();
+});
 observer.observe(document.body, { childList: true, subtree: true });
-
-// Por si acaso, ejecuta también en carga inicial
-document.addEventListener("DOMContentLoaded", iniciarSidebar);
 </script>
 
 <slot />
